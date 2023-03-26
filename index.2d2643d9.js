@@ -1,2 +1,0 @@
-const e=document.querySelector("#search-box");fetch("https://restcountries.com/v3.1/name/").then((e=>e.json())).then((e=>console.log(e))),e.addEventListener("input",(()=>{var e;(e="",fetch(`https://restcountries.com/v3.1/name/${e}?fields=name,capital,population,flags,languages`).then((e=>{if(!e.ok)throw new Error(e.status);return e.json()})).then((e=>console.log(e)))).then((e=>console.log(e.common))).catch((e=>console.log("Oops, there is no country with that name")))}));
-//# sourceMappingURL=index.2d2643d9.js.map
