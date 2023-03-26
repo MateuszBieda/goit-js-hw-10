@@ -17,4 +17,18 @@ body {
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+  border-color: blue;
+}
+.list-item{
+  color:black;
+  font-weight: 500;
+  margin: auto;
+  list-style: none;
+  padding-left: 0;
+}
+li>img {
+  margin-right: 10;
+}
+.country-list{
+  padding-left: 15;
 }
