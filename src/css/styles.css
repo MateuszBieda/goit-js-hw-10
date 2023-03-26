@@ -32,3 +32,11 @@ li>img {
 .country-list{
   padding-left: 15;
 }
+.list-item2{
+  color:black;
+  font-weight: 800;
+  
+  margin: auto;
+  list-style: none;
+  padding-left: 0;
+}
