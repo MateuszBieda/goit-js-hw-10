@@ -86,31 +86,50 @@ let debounce = require('lodash.debounce');
    );
 
 
-function onInput (){
-  const name = textInput.value.trim();
+function onInput (e){
+  countryList.innerHTML="";
+  countryInfo.innerHtml="";
+
+  const name = e.target.value.trim();
+
+  if (name===""||!name) {
+    countryList.innerHTML="";
+    countryInfo.innerHtml="";
+  }
+
   fetchCountries(name)
   
      .then((data) =>{
-      countryList.textContent='';
-      countryInfo.textContent='';
+    
+
      if (data.length>2&&data.length<=10){
       renderCountryList(data)
-      
+      countryList.innerHTML="";
+      countryInfo.innerHtml=""; 
      };
      if (data.length===1){
-      countryList.textContent='';
-      renderCountryList(data)
-      renderCountryAdditionalInfo(data)}
+      
+      renderCountryList(data);
+      renderCountryAdditionalInfo(data);
+      countryList.innerHTML="";
+      countryInfo.innerHtml="";
+    }
       if (data.length>10){
+        countryList.innerHTML="";
+        countryInfo.innerHtml=""; 
         Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
+       
         }
      
     }
     )
 
-     .catch((error) => Notiflix.Notify.failure("Oops, there is no country with that name"))
-}
+     .catch((error) => {
+      
+      Notiflix.Notify.failure("Oops, there is no country with that name");
 
+    })
+}
 
 
 
@@ -131,11 +150,5 @@ function renderCountryAdditionalInfo(data){
   .join("");
  
   return countryInfo.insertAdjacentHTML('beforeend',markup);
- }
-
- function clear(){
-
-  countryList.innerHTML='';
-
  }
 
