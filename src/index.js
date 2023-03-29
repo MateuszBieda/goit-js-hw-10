@@ -86,37 +86,31 @@ let debounce = require('lodash.debounce');
    );
 
 
-function onInput (e){
-  countryList.innerHTML="";
-  countryInfo.innerHtml="";
+function onInput (){
 
-  const name = e.target.value.trim();
 
-  if (name===""||!name) {
-    countryList.innerHTML="";
-    countryInfo.innerHtml="";
-  }
+  const name = textInput.value.trim();
+
+
 
   fetchCountries(name)
   
      .then((data) =>{
-    
+      countryList.innerHTML="";
+      countryInfo.innerHTML="";
 
      if (data.length>2&&data.length<=10){
       renderCountryList(data)
-      countryList.innerHTML="";
-      countryInfo.innerHtml=""; 
+
      };
      if (data.length===1){
       
       renderCountryList(data);
       renderCountryAdditionalInfo(data);
-      countryList.innerHTML="";
-      countryInfo.innerHtml="";
+
     }
       if (data.length>10){
-        countryList.innerHTML="";
-        countryInfo.innerHtml=""; 
+     
         Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
        
         }
@@ -125,7 +119,8 @@ function onInput (e){
     )
 
      .catch((error) => {
-      
+      countryList.innerHTML="";
+      countryInfo.innerHTML="";
       Notiflix.Notify.failure("Oops, there is no country with that name");
 
     })
